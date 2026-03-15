@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const eventDetailsContainer = document.getElementById('event-details');
-    const registerButton = document.getElementById('register-btn');
     const googleSignInContainer = document.getElementById('google-signin-container');
     const themeSwitch = document.getElementById('checkbox');
     const eventId = '69b69679c34207e691c1f576';
@@ -47,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 eventHtml += `<p><strong>Cost:</strong> Free</p>`;
             }
+            eventHtml += `<button id="register-btn">Register for Event</button>`;
             eventDetailsContainer.innerHTML = eventHtml;
         } catch (error) {
             console.error('Error fetching event:', error);
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // User is logged in
             FidaAPI.auth.getMe().then(user => {
                 const welcomeEl = document.createElement('div');
+                welcomeEl.classList.add('user-welcome');
                 welcomeEl.innerHTML = `
                     <span>Welcome, ${user.name}!</span>
                     <button id="logout-btn">Logout</button>
@@ -172,6 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLoginUI(); // Try to update UI even if config fails
     });
 
-    registerButton.addEventListener('click', registerForEvent);
+    eventDetailsContainer.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'register-btn') {
+            registerForEvent();
+        }
+    });
 });
 

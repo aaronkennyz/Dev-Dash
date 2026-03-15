@@ -3,32 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev&Dash</title>
+    <title>Dev&Dash - Developer Events</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Dev&Dash</a>
+            <ul class="nav-links">
+                <li><a href="#events">Events</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div id="google-signin-container"></div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Find Your Next Developer Event</h1>
+            <p>Your one-stop platform for developer events, workshops, and hackathons.</p>
+        </div>
+    </header>
+
+    <main class="container" id="events">
+        <section id="event-details">
+            <!-- Event details will be loaded here -->
+        </section>
+    </main>
+    
+    <section id="about" class="container">
+        <h2>About Us</h2>
+        <p>Dev&Dash is a community-driven platform to discover, share, and register for developer-focused events around the globe. Our mission is to connect developers with opportunities to learn, network, and grow.</p>
+    </section>
+    
+    <section id="contact" class="container">
+        <h2>Contact</h2>
+        <p>Have questions or want to list your event? Reach out to us at <a href="mailto:contact@devanddash.com">contact@devanddash.com</a>.</p>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Dev&Dash. All Rights Reserved.</p>
             <div class="theme-switch-container">
                 <label class="switch">
                     <input type="checkbox" id="checkbox">
                     <span class="slider round"></span>
                 </label>
             </div>
-            <h1>Welcome to Dev&Dash</h1>
-            <p>Your one-stop platform for developer events.</p>
-        </header>
-        <main>
-            <div id="google-signin-container"></div>
-            <div id="event-details">
-                <!-- Event details will be loaded here -->
-            </div>
-        </main>
-        <footer>
-            <button id="register-btn">Register for Event</button>
-        </footer>
-    </div>
+        </div>
+    </footer>
+
     <script src="module-backend/gigbycity@apiCall.js"></script>
     <script src="script.js"></script>
 </body>
