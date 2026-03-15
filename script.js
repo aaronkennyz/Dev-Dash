@@ -5,24 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeSwitch = document.getElementById('checkbox');
     const eventId = '69b69679c34207e691c1f576';
     // IMPORTANT: Replace with your actual Google Client ID
-    let CLIENT_ID="{}"
+    let CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com";
 
     // --- Theme Switcher ---
-    themeSwitch.addEventListener('change', () => {
-        if (themeSwitch.checked) {
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.body.classList.remove('dark-mode');
-            localStorage.setItem('theme', 'light');
-        }
-    });
+    try {
+        themeSwitch.addEventListener('change', () => {
+            if (themeSwitch.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    } catch (error) {
+        console.error("Theme switcher not found or error:", error);
+    }
+
 
     function loadTheme() {
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'dark') {
             document.body.classList.add('dark-mode');
-            themeSwitch.checked = true;
+            if(themeSwitch) themeSwitch.checked = true;
         }
     }
 
@@ -32,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const event = await FidaAPI.events.getOne(eventId);
             let eventHtml = `
+                <h2>${event.name}</h2>
                 <p>${event.description}</p>
                 <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
                 <p><strong>Location:</strong> ${event.location}</p>
@@ -83,17 +89,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             // User is not logged in
-            google.accounts.id.initialize({
-                client_id: CLIENT_ID,
-                callback: handleCredentialResponse
-            });
-            google.accounts.id.renderButton(
-                googleSignInContainer,
-                { theme: "outline", size: "large" }
-            );
+            try {
+                google.accounts.id.initialize({
+                    client_id: CLIENT_ID,
+                    callback: handleCredentialResponse
+                });
+                google.accounts.id.renderButton(
+                    googleSignInContainer,
+                    { theme: "outline", size: "large" }
+                );
+            } catch (error) {
+                console.error("Google Sign-In initialization failed:", error);
+                googleSignInContainer.innerHTML = "<p>Could not load Sign-In. Please check your connection or Client ID.</p>";
+            }
         }
     }
-    
+
     function logout() {
         localStorage.removeItem('fida_token');
         updateLoginUI();
@@ -147,7 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initializations ---
     FidaAPI.auth.ax001().then(() => {
-        CLIENT_ID = window.googleClientId;
+        if(window.googleClientId) {
+            CLIENT_ID = window.googleClientId;
+        }
         loadTheme();
         displayEvent();
         updateLoginUI();
@@ -156,9 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fallback or error handling
         loadTheme();
         displayEvent();
-        // Don't try to initialize Google Sign-In if CLIENT_ID is not set
+        updateLoginUI(); // Try to update UI even if config fails
     });
-    
+
     registerButton.addEventListener('click', registerForEvent);
 });
 

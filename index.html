@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autumn Event</title>
+    <title>Dev&Dash</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Autumn Event</h1>
+            <div class="theme-switch-container">
+                <label class="switch">
+                    <input type="checkbox" id="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <h1>Welcome to Dev&Dash</h1>
+            <p>Your one-stop platform for developer events.</p>
         </header>
-        <main id="event-details">
-            <!-- Event details will be loaded here -->
+        <main>
+            <div id="google-signin-container"></div>
+            <div id="event-details">
+                <!-- Event details will be loaded here -->
+            </div>
         </main>
         <footer>
-            <button id="register-btn">Register</button>
+            <button id="register-btn">Register for Event</button>
         </footer>
     </div>
     <script src="module-backend/gigbycity@apiCall.js"></script>
