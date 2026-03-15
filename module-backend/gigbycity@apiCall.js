@@ -3,9 +3,7 @@
    ========================================= */
 FidaAPI = {
     // URL Configuration
-    BASE_URL: window.location.hostname.includes('koyeb.app') 
-        ? 'https://independent-irita-clubspot-9e43f2fa.koyeb.app/api' 
-        : 'http://localhost:3000/api',
+    BASE_URL:  'https://independent-irita-clubspot-9e43f2fa.koyeb.app/api',
 
     // Helper: Get Auth Headers
     getHeaders(isFormData = false) {

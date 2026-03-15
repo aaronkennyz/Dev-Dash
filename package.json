@@ -9,8 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.28.2",
-  "dependencies": {
-    "create-astro": "^5.0.0"
-  }
+  "packageManager": "pnpm@10.28.2"
 }

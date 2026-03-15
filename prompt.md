@@ -1,7 +1,7 @@
 # Prompt
 
 ## Objective
-Now, in module-backend/ folder, is a API communication protocol with the server.
+Now, in module-backend/ folder, is a API communication module for communication with the server.
 
 Objective: To use the GigByCity server's api into our website for a simple hackathon pipeline:
 
@@ -12,7 +12,7 @@ pay-if the event has cost;
 Event ID registered in GigByCity: "69b69679c34207e691c1f576"
 
 
-## To be made in: astro.js
+## To be made in: html css js, using the template offered above
 Scripting is disabled for you.
 
 ## Definition of success:
