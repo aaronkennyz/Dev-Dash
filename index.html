@@ -7,75 +7,80 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">Dev&Dash</a>
-            <ul class="nav-links">
-                <li><a href="#events">Events</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div id="google-signin-container"></div>
-        </div>
-    </nav>
+<body style="scroll-behavior: smooth;">
 
-    <header class="hero">
+    <header>
         <div class="container">
-            <h1>Develop {} and Dash with the cash_</h1>
-            <p>Sponsored by GigByCity: Every connection. Every show.</p>
+            <nav>
+                <a href="#" class="logo">
+                    <!-- Using a generic logo, keeping it simple -->
+                    <img src="https://i.ibb.co/XzYm4Lp/heart-logo.png" alt="Dev&Dash Logo" class="logo-img">
+                </a>
+                <div class="nav-links">
+                    <a href="#event-details">Event Details</a>
+                    <a href="#about">About</a>
+                </div>
+                <!-- Google Sign-In container replaces the static register button -->
+                <div id="google-signin-container"></div>
+            </nav>
         </div>
     </header>
 
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-            <img src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://images.unsplash.com/photo-1547027429-8024acca2494" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952" style="width:100%">
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
-
-    <main class="container" id="events">
-        <section id="event-details">
-            <!-- Event details will be loaded here -->
-        </section>
-    </main>
-    
-    <section id="about" class="container">
-        <h2>About Us</h2>
-        <p>Dev&Dash is an annual hackathon held by the School Of Engineering, St Aloysius. Marked by it's hype, the infamous code carnival, the presence of multiple MNCs, and the ultimate development challenge which created many entrepreneurs.</p>
-    </section>
-    
-    <section id="contact" class="container">
-        <h2>Contact</h2>
-        <p>Have questions or want to list your event? Reach out to us at <a href="mailto:contact@devanddash.com">contact@devanddash.com</a>.</p>
-    </section>
-
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Dev&Dash | All Rights Reserved | Powered by GigByCity</p>
-            <div class="theme-switch-container">
-                <label class="switch">
-                    <input type="checkbox" id="checkbox">
-                    <span class="slider round"></span>
-                </label>
+    <main>
+        
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-graphic animate-on-scroll animate-left">
+                    <img src="https://i.ibb.co/N6TjY4G/protothon-main-graphic.png" alt="Hackathon design graphic">
+                </div>
+                
+                <div class="hero-text">
+                    <h1 class="animate-on-scroll animate-right">
+                        Dev&Dash <span class="highlight">Autumn</span> Event
+                    </h1>
+                    <p class="description animate-on-scroll animate-right">
+                        Join developers, designers, and innovators for a weekend of creation, competition, and fun. Push the limits of your mind to make something amazing.
+                    </p>
+                    <!-- This button will now trigger the registration logic -->
+                    <a href="#" id="register-btn" class="btn animate-on-scroll animate-right">REGISTER FOR EVENT</a>
+                </div>
             </div>
+        </section>
+
+        <!-- This section is now the container for dynamic event details -->
+        <section id="event-details" class="section-why">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">EVENT DETAILS</h2>
+                <!-- Content will be loaded here by script.js -->
+            </div>
+        </section>
+
+        <section id="about" class="section-details">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">ABOUT US</h2>
+                <div class="grid-half">
+                    <div class="section-content-text animate-on-scroll animate-left">
+                        <h3>Who We Are</h3>
+                        <p>Dev&Dash is an annual hackathon held by the School Of Engineering, St Aloysius. Marked by it's hype, the infamous code carnival, the presence of multiple MNCs, and the ultimate development challenge which created many entrepreneurs.</p>
+                        <h3>Our Mission</h3>
+                        <p>Our goal is to foster a community of builders and dreamers. We provide a platform to learn, network, and showcase talent to the world and to potential employers.</p>
+                    </div>
+                    <div class="section-content-image animate-on-scroll animate-right image-r">
+                        [Community Image Placeholder]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Dev&Dash. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Scripts must be at the end -->
     <script src="module-backend/gigbycity@apiCall.js"></script>
     <script src="script.js"></script>
 </body>

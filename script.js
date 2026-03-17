@@ -1,56 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
     const eventDetailsContainer = document.getElementById('event-details');
     const googleSignInContainer = document.getElementById('google-signin-container');
-    const themeSwitch = document.getElementById('checkbox');
+    const registerBtn = document.getElementById('register-btn');
     const eventId = '69b69679c34207e691c1f576';
-    // IMPORTANT: Replace with your actual Google Client ID
     let CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com";
-
-    // --- Theme Switcher ---
-    try {
-        themeSwitch.addEventListener('change', () => {
-            if (themeSwitch.checked) {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    } catch (error) {
-        console.error("Theme switcher not found or error:", error);
-    }
-
-
-    function loadTheme() {
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            if(themeSwitch) themeSwitch.checked = true;
-        }
-    }
-
 
     // --- Event & Auth Logic ---
     async function displayEvent() {
         try {
+            // Target the container inside the section to inject details
+            const container = eventDetailsContainer.querySelector('.container');
+            container.innerHTML = '<h2>Loading event details...</h2>'; // Show loading message
+
             const event = await FidaAPI.events.getOne(eventId);
+            
+            // Build the HTML for the event details, matching the new design
             let eventHtml = `
-                <h2>${event.name}</h2>
-                <p>${event.description}</p>
-                <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
-                <p><strong>Location:</strong> ${event.location}</p>
+                <h2 class="section-title animate-on-scroll">EVENT DETAILS</h2>
+                <div class="grid-half">
+                    <div class="section-content-image animate-on-scroll animate-left image-l">
+                        [Event Icon Placeholder]
+                    </div>
+                    <div class="section-content-text animate-on-scroll animate-right">
+                        <h3>${event.name}</h3>
+                        <p>${event.description}</p>
+                        <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
+                        <p><strong>Location:</strong> ${event.location}</p>
+                        <p><strong>Cost:</strong> ${event.cost > 0 ? `$${event.cost}` : 'Free'}</p>
+                    </div>
+                </div>
             `;
-            if (event.cost > 0) {
-                eventHtml += `<p><strong>Cost:</strong> $${event.cost}</p>`;
-            } else {
-                eventHtml += `<p><strong>Cost:</strong> Free</p>`;
-            }
-            eventHtml += `<button id="register-btn">Register for Event</button>`;
-            eventDetailsContainer.innerHTML = eventHtml;
+            container.innerHTML = eventHtml;
+
+            // Re-run the animation observer for the newly added content
+            observeAnimations();
+
         } catch (error) {
             console.error('Error fetching event:', error);
-            eventDetailsContainer.innerHTML = '<p>Could not load event details. Please try again later.</p>';
+            eventDetailsContainer.querySelector('.container').innerHTML = '<h2 class="section-title">Could not load event details. Please try again later.</h2>';
         }
     }
 
@@ -71,7 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateLoginUI() {
         const token = localStorage.getItem('fida_token');
-        googleSignInContainer.innerHTML = ''; // Clear the container
+        if (googleSignInContainer) {
+            googleSignInContainer.innerHTML = ''; // Clear the container
+        } else {
+            console.error("google-signin-container not found!");
+            return;
+        }
+
 
         if (token) {
             // User is logged in
@@ -101,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
             } catch (error) {
                 console.error("Google Sign-In initialization failed:", error);
-                googleSignInContainer.innerHTML = "<p>Could not load Sign-In. Please check your connection or Client ID.</p>";
+                googleSignInContainer.innerHTML = "<p>Could not load Sign-In.</p>";
             }
         }
     }
@@ -110,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('fida_token');
         updateLoginUI();
     }
-
 
     async function registerForEvent() {
         const token = localStorage.getItem('fida_token');
@@ -157,55 +149,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- Animation Logic from Prototype ---
+    function observeAnimations() {
+        const observerOptions = {
+            root: null,
+            threshold: 0.15,
+            rootMargin: '0px 0px -5% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Eagerly animate elements already in view on load
+        elementsToAnimate.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                element.classList.add('visible');
+                observer.unobserve(element);
+            }
+        });
+    }
+
+
     // --- Initializations ---
     FidaAPI.auth.ax001().then(() => {
         if(window.googleClientId) {
             CLIENT_ID = window.googleClientId;
         }
-        loadTheme();
         displayEvent();
         updateLoginUI();
+        observeAnimations(); // Initial call for animations
     }).catch(error => {
         console.error('Failed to load config:', error);
-        // Fallback or error handling
-        loadTheme();
         displayEvent();
-        updateLoginUI(); // Try to update UI even if config fails
+        updateLoginUI();
+        observeAnimations();
     });
 
-    eventDetailsContainer.addEventListener('click', function(e) {
-        if (e.target && e.target.id === 'register-btn') {
+    if (registerBtn) {
+        registerBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // It's an <a> tag, prevent it from navigating
             registerForEvent();
-        }
-    });
-
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    // Next/previous controls
-    window.plusSlides = function(n) {
-        showSlides(slideIndex += n);
-    }
-
-    // Thumbnail image controls
-    window.currentSlide = function(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
+        });
     }
 });
 
