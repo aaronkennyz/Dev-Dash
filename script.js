@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = '<h2>Loading event details...</h2>'; // Show loading message
 
             const event = await FidaAPI.events.getOne(eventId);
-            
+            const image='assets/'+'Dev&DashRoom.jpg'
             // Build the HTML for the event details, matching the new design
             let eventHtml = `
                 <h2 class="section-title animate-on-scroll">EVENT DETAILS</h2>
                 <div class="grid-half">
                     <div class="section-content-image animate-on-scroll animate-left image-l">
-                        [Event Icon Placeholder]
+                        <img src="${image}">
                     </div>
                     <div class="section-content-text animate-on-scroll animate-right">
                         <h3>${event.name}</h3>
