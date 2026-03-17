@@ -182,6 +182,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // --- Scroll-based Background Animation ---
+    let lastScrollTop = 0;
+    const body = document.body;
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        // Simple parallax effect
+        body.style.backgroundPositionY = `${scrollTop * 0.5}px`;
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+    }, { passive: true });
+
+
     // --- Initializations ---
     FidaAPI.auth.ax001().then(() => {
         if(window.googleClientId) {
