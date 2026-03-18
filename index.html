@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutureSprint | St Aloysius Hackathon</title>
-    
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='72' font-size='72' font-family='Inter,system-ui,sans-serif' font-weight='800' fill='%23ffffff' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -60,6 +65,7 @@
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .card-hover:hover {
             border-color: #e11d48;
             box-shadow: 0 10px 30px -10px rgba(225, 29, 72, 0.15);
@@ -73,6 +79,7 @@
             font-weight: 600;
             transition: all 0.2s ease;
         }
+
         .btn-solid:hover {
             background: #e11d48;
             color: #ffffff;
@@ -84,6 +91,7 @@
             font-weight: 600;
             transition: all 0.2s ease;
         }
+
         .btn-accent:hover {
             background: #be123c;
         }
@@ -95,6 +103,7 @@
             font-weight: 600;
             transition: all 0.2s ease;
         }
+
         .btn-outline:hover {
             border-color: #0a0a0a;
             background: #f4f4f5;
@@ -104,13 +113,16 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #ffffff;
             border-left: 1px solid #e4e4e7;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #d4d4d8;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #e11d48;
         }
@@ -131,20 +143,24 @@
         }
     </style>
 </head>
+
 <body class="antialiased selection:bg-brand-red selection:text-white">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 border-b border-transparent bg-white/90 backdrop-blur-sm">
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 py-4 border-b border-transparent bg-white/90 backdrop-blur-sm">
         <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-8 h-8 bg-brand-black flex items-center justify-center text-white font-bold transition-colors group-hover:bg-brand-red">
+                <div
+                    class="w-8 h-8 bg-brand-black flex items-center justify-center text-white font-bold transition-colors group-hover:bg-brand-red">
                     F
                 </div>
                 <span class="text-xl font-black tracking-tight uppercase">FutureSprint</span>
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wider text-brand-darkGray">
+            <div
+                class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wider text-brand-darkGray">
                 <a href="#about" class="hover:text-brand-red transition-colors">About</a>
                 <a href="#tracks" class="hover:text-brand-red transition-colors">Bounties</a>
                 <button onclick="openModal()" class="btn-solid px-6 py-2.5 rounded-none">
@@ -159,9 +175,12 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 py-6 px-6 flex flex-col gap-4 z-40 shadow-xl">
-            <a href="#about" class="text-lg font-bold uppercase text-brand-black hover:text-brand-red mobile-link">About</a>
-            <a href="#tracks" class="text-lg font-bold uppercase text-brand-black hover:text-brand-red mobile-link">Bounties</a>
+        <div id="mobile-menu"
+            class="hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 py-6 px-6 flex flex-col gap-4 z-40 shadow-xl">
+            <a href="#about"
+                class="text-lg font-bold uppercase text-brand-black hover:text-brand-red mobile-link">About</a>
+            <a href="#tracks"
+                class="text-lg font-bold uppercase text-brand-black hover:text-brand-red mobile-link">Bounties</a>
             <button onclick="openModal()" class="btn-solid w-full py-4 mt-2 text-base uppercase">
                 Register Now
             </button>
@@ -171,30 +190,36 @@
     <!-- Hero Section -->
     <section class="relative min-h-[95vh] pt-32 pb-16 flex items-center z-10">
         <div class="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            
+
             <!-- Left: Typography & Call to action -->
             <div class="max-w-2xl flex flex-col items-start bg-white/80 p-4 md:p-0">
-                <div class="inline-flex items-center gap-2 px-3 py-1 border border-brand-red text-brand-red font-mono text-xs font-bold uppercase mb-8 bg-white">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 border border-brand-red text-brand-red font-mono text-xs font-bold uppercase mb-8 bg-white">
                     <span class="w-2 h-2 bg-brand-red animate-pulse"></span>
                     SYS.DATE: March 25, 2026
                 </div>
-                
-                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black mb-4 tracking-tighter leading-[0.9] uppercase text-brand-black">
-                    Code. <br/>
-                    Build. <br/>
+
+                <h1
+                    class="text-6xl sm:text-7xl lg:text-8xl font-black mb-4 tracking-tighter leading-[0.9] uppercase text-brand-black">
+                    Code. <br />
+                    Build. <br />
                     <span class="text-brand-red">Sprint.</span>
                 </h1>
-                
-                <h2 class="text-xl md:text-2xl font-black text-brand-red mb-6 uppercase tracking-widest bg-white inline-block">
+
+                <h2
+                    class="text-xl md:text-2xl font-black text-brand-red mb-6 uppercase tracking-widest bg-white inline-block">
                     8 hrs. one idea. built for impact.
                 </h2>
-                
-                <p class="text-base md:text-lg text-brand-darkGray mb-10 leading-relaxed max-w-lg font-medium border-l-4 border-brand-red pl-4 bg-white/50 py-1">
-                    Join developers, designers, and innovators for a weekend of creation, competition, and fun. Push the limits of your mind to make something amazing at St Aloysius.
+
+                <p
+                    class="text-base md:text-lg text-brand-darkGray mb-10 leading-relaxed max-w-lg font-medium border-l-4 border-brand-red pl-4 bg-white/50 py-1">
+                    Join developers, designers, and innovators for a weekend of creation, competition, and fun. Push the
+                    limits of your mind to make something amazing at St Aloysius.
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                    <button onclick="openModal()" class="btn-accent px-8 py-4 w-full sm:w-auto text-base uppercase flex items-center justify-center gap-3 shadow-lg shadow-brand-red/20">
+                    <button onclick="openModal()"
+                        class="btn-accent px-8 py-4 w-full sm:w-auto text-base uppercase flex items-center justify-center gap-3 shadow-lg shadow-brand-red/20">
                         Join FutureSprint <i class="fa-solid fa-arrow-right text-sm"></i>
                     </button>
                     <a href="#about" class="btn-outline px-8 py-4 w-full sm:w-auto text-base text-center uppercase">
@@ -205,14 +230,19 @@
 
             <!-- Right: 90s Aesthetic PC -->
             <div class="relative w-full flex justify-center lg:justify-end mt-8 lg:mt-0">
-                <div id="retro-pc" class="group relative w-full max-w-[500px] aspect-[4/3] bg-[#d4d0c8] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] flex flex-col border-2 border-brand-black border-t-white border-l-white transition-transform hover:-translate-y-2">
-                    
+                <div id="retro-pc"
+                    class="group relative w-full max-w-[500px] aspect-[4/3] bg-[#d4d0c8] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] flex flex-col border-2 border-brand-black border-t-white border-l-white transition-transform hover:-translate-y-2">
+
                     <!-- Bezel / Screen container -->
-                    <div class="flex-1 m-4 sm:m-6 bg-brand-black border-4 border-[#808080] border-b-[#ffffff] border-r-[#ffffff] p-2 relative">
+                    <div
+                        class="flex-1 m-4 sm:m-6 bg-brand-black border-4 border-[#808080] border-b-[#ffffff] border-r-[#ffffff] p-2 relative">
                         <!-- Screen (Windows 95/98 Desktop) -->
-                        <div class="w-full h-full bg-[#008080] relative overflow-hidden font-sans cursor-pointer" onclick="openModal()">
+                        <div class="w-full h-full bg-[#008080] relative overflow-hidden font-sans cursor-pointer"
+                            onclick="openModal()">
                             <!-- Screen CRT overlay -->
-                            <div class="absolute inset-0 pointer-events-none z-20" style="background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%); background-size: 100% 4px;"></div>
+                            <div class="absolute inset-0 pointer-events-none z-20"
+                                style="background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%); background-size: 100% 4px;">
+                            </div>
 
                             <!-- Desktop Icons -->
                             <div class="absolute top-2 left-2 flex flex-col gap-4 text-white text-center w-16 z-10">
@@ -231,52 +261,69 @@
                             </div>
 
                             <!-- Open Window -->
-                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85%] max-w-[280px] bg-[#d4d0c8] border-2 border-t-white border-l-white border-b-black border-r-black z-10 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                            <div
+                                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85%] max-w-[280px] bg-[#d4d0c8] border-2 border-t-white border-l-white border-b-black border-r-black z-10 shadow-xl group-hover:scale-105 transition-transform duration-300">
                                 <!-- Title Bar -->
-                                <div class="bg-[#000080] text-white px-2 py-1 flex justify-between items-center text-xs font-bold">
+                                <div
+                                    class="bg-[#000080] text-white px-2 py-1 flex justify-between items-center text-xs font-bold">
                                     <span>FutureSprint.exe</span>
                                     <div class="flex gap-1">
-                                        <div class="w-3.5 h-3.5 bg-[#d4d0c8] border border-t-white border-l-white border-b-black border-r-black text-black flex items-center justify-center text-[9px] font-bold">_</div>
-                                        <div class="w-3.5 h-3.5 bg-[#d4d0c8] border border-t-white border-l-white border-b-black border-r-black text-black flex items-center justify-center text-[9px] font-bold">□</div>
-                                        <div class="w-3.5 h-3.5 bg-[#d4d0c8] border border-t-white border-l-white border-b-black border-r-black text-black flex items-center justify-center text-[9px] font-bold">X</div>
+                                        <div
+                                            class="w-3.5 h-3.5 bg-[#d4d0c8] border border-t-white border-l-white border-b-black border-r-black text-black flex items-center justify-center text-[9px] font-bold">
+                                            _</div>
+                                        <div
+                                            class="w-3.5 h-3.5 bg-[#d4d0c8] border border-t-white border-l-white border-b-black border-r-black text-black flex items-center justify-center text-[9px] font-bold">
+                                            □</div>
+                                        <div
+                                            class="w-3.5 h-3.5 bg-[#d4d0c8] border border-t-white border-l-white border-b-black border-r-black text-black flex items-center justify-center text-[9px] font-bold">
+                                            X</div>
                                     </div>
                                 </div>
                                 <!-- Window Content -->
                                 <div class="p-4 text-center text-black text-xs font-sans">
                                     <div class="flex items-start gap-4 mb-4 text-left">
                                         <i class="fa-solid fa-circle-exclamation text-blue-600 text-3xl"></i>
-                                        <p class="mt-1 leading-tight">System is ready for code injection. Proceed to hackathon?</p>
+                                        <p class="mt-1 leading-tight">System is ready for code injection. Proceed to
+                                            hackathon?</p>
                                     </div>
-                                    <button class="bg-[#d4d0c8] border-2 border-t-white border-l-white border-b-black border-r-black px-6 py-1 active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-black outline-none focus:outline-dotted focus:outline-1 focus:outline-black focus:-outline-offset-4">OK</button>
+                                    <button
+                                        class="bg-[#d4d0c8] border-2 border-t-white border-l-white border-b-black border-r-black px-6 py-1 active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-black outline-none focus:outline-dotted focus:outline-1 focus:outline-black focus:-outline-offset-4">OK</button>
                                 </div>
                             </div>
 
                             <!-- Taskbar -->
-                            <div class="absolute bottom-0 w-full h-8 bg-[#d4d0c8] border-t-2 border-white flex justify-between items-center px-1 z-20">
+                            <div
+                                class="absolute bottom-0 w-full h-8 bg-[#d4d0c8] border-t-2 border-white flex justify-between items-center px-1 z-20">
                                 <div class="flex items-center gap-1">
-                                    <div class="flex items-center gap-1 bg-[#d4d0c8] border-2 border-t-white border-l-white border-b-black border-r-black px-2 py-0.5 font-bold text-xs text-black">
+                                    <div
+                                        class="flex items-center gap-1 bg-[#d4d0c8] border-2 border-t-white border-l-white border-b-black border-r-black px-2 py-0.5 font-bold text-xs text-black">
                                         <i class="fa-brands fa-windows text-blue-600"></i> Start
                                     </div>
                                     <div class="h-5 w-px bg-gray-400 mx-1 border-r border-white"></div>
-                                    <div class="bg-[#d4d0c8] border-2 border-t-black border-l-black border-b-white border-r-white px-2 py-0.5 font-bold text-xs text-black">
+                                    <div
+                                        class="bg-[#d4d0c8] border-2 border-t-black border-l-black border-b-white border-r-white px-2 py-0.5 font-bold text-xs text-black">
                                         FutureSprint.exe
                                     </div>
                                 </div>
-                                <div class="bg-[#d4d0c8] border-2 border-t-black border-l-black border-b-white border-r-white px-2 py-0.5 text-[10px] font-bold text-black flex items-center gap-2">
+                                <div
+                                    class="bg-[#d4d0c8] border-2 border-t-black border-l-black border-b-white border-r-white px-2 py-0.5 text-[10px] font-bold text-black flex items-center gap-2">
                                     <i class="fa-solid fa-volume-high text-gray-600"></i>
                                     11:09 AM
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- PC Base/Details -->
-                    <div class="h-6 border-t-2 border-[#808080] mx-4 sm:mx-6 mb-3 flex justify-between items-center pt-2">
+                    <div
+                        class="h-6 border-t-2 border-[#808080] mx-4 sm:mx-6 mb-3 flex justify-between items-center pt-2">
                         <div class="text-[10px] font-black tracking-widest text-brand-black/50">NEXUS_95</div>
                         <div class="flex items-center gap-2">
                             <div class="w-4 h-1 bg-black/20 border-b border-white"></div>
                             <div class="w-4 h-1 bg-black/20 border-b border-white"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500 border border-black/50 shadow-[inset_0_1px_2px_rgba(255,255,255,0.5)]"></div>
+                            <div
+                                class="w-3 h-3 rounded-full bg-green-500 border border-black/50 shadow-[inset_0_1px_2px_rgba(255,255,255,0.5)]">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -287,12 +334,16 @@
 
     <!-- Information Divider (Inverted to Black) -->
     <div class="bg-brand-black py-8 relative z-10">
-        <div class="container mx-auto px-6 flex flex-wrap justify-center items-center gap-8 md:gap-16 text-white font-bold text-sm uppercase tracking-widest">
-            <span class="flex items-center gap-2 text-brand-red"><i class="fa-regular fa-clock"></i> <span class="text-white">8 HOURS</span></span>
+        <div
+            class="container mx-auto px-6 flex flex-wrap justify-center items-center gap-8 md:gap-16 text-white font-bold text-sm uppercase tracking-widest">
+            <span class="flex items-center gap-2 text-brand-red"><i class="fa-regular fa-clock"></i> <span
+                    class="text-white">8 HOURS</span></span>
             <span class="hidden md:inline text-brand-darkGray">/</span>
-            <span class="flex items-center gap-2 text-brand-red"><i class="fa-solid fa-building-columns"></i> <span class="text-white">ST ALOYSIUS</span></span>
+            <span class="flex items-center gap-2 text-brand-red"><i class="fa-solid fa-building-columns"></i> <span
+                    class="text-white">ST ALOYSIUS</span></span>
             <span class="hidden md:inline text-brand-darkGray">/</span>
-            <span class="flex items-center gap-2 text-brand-red"><i class="fa-solid fa-code"></i> <span class="text-white">CODE CARNIVAL</span></span>
+            <span class="flex items-center gap-2 text-brand-red"><i class="fa-solid fa-code"></i> <span
+                    class="text-white">CODE CARNIVAL</span></span>
         </div>
     </div>
 
@@ -301,26 +352,31 @@
         <div class="container mx-auto px-6 md:px-12">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6 uppercase text-brand-black leading-none">
-                        The Code <br/>
+                    <h2
+                        class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6 uppercase text-brand-black leading-none">
+                        The Code <br />
                         <span class="text-brand-red">Carnival.</span>
                     </h2>
                     <div class="w-12 h-2 bg-brand-red mb-8"></div>
                     <p class="text-brand-darkGray text-lg leading-relaxed mb-6 font-medium">
-                        <strong class="text-brand-black">FutureSprint</strong> is an annual hackathon held by the <strong class="text-brand-black">School Of Engineering, St Aloysius</strong>.
+                        <strong class="text-brand-black">FutureSprint</strong> is an annual hackathon held by the
+                        <strong class="text-brand-black">School Of Engineering, St Aloysius</strong>.
                     </p>
                     <p class="text-brand-darkGray text-lg leading-relaxed font-medium">
-                        Marked by its massive hype, the presence of multiple MNCs, and the ultimate development challenge which has sparked the journeys of many successful entrepreneurs.
+                        Marked by its massive hype, the presence of multiple MNCs, and the ultimate development
+                        challenge which has sparked the journeys of many successful entrepreneurs.
                     </p>
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-6">
-                    <div class="structural-border p-8 flex flex-col justify-center items-center text-center aspect-square bg-white shadow-sm">
+                    <div
+                        class="structural-border p-8 flex flex-col justify-center items-center text-center aspect-square bg-white shadow-sm">
                         <span class="text-5xl font-black text-brand-black mb-2">08</span>
                         <span class="text-xs font-bold text-brand-red uppercase tracking-widest">Hours</span>
                         <span class="text-sm font-medium text-gray-500 mt-1">To Build</span>
                     </div>
-                    <div class="structural-border p-8 flex flex-col justify-center items-center text-center aspect-square bg-brand-black mt-12 shadow-lg shadow-black/10">
+                    <div
+                        class="structural-border p-8 flex flex-col justify-center items-center text-center aspect-square bg-brand-black mt-12 shadow-lg shadow-black/10">
                         <span class="text-5xl font-black text-white mb-2">25</span>
                         <span class="text-xs font-bold text-brand-red uppercase tracking-widest">March</span>
                         <span class="text-sm font-medium text-gray-400 mt-1">2026</span>
@@ -335,8 +391,10 @@
         <div class="container mx-auto px-6 md:px-12">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b-2 border-brand-black pb-6">
                 <div class="max-w-xl">
-                    <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">Target <span class="text-brand-red">Bounties</span></h2>
-                    <p class="text-brand-darkGray text-lg font-medium">Select a domain, compile your code, and extract the rewards.</p>
+                    <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">Target <span
+                            class="text-brand-red">Bounties</span></h2>
+                    <p class="text-brand-darkGray text-lg font-medium">Select a domain, compile your code, and extract
+                        the rewards.</p>
                 </div>
                 <div class="hidden md:block font-mono text-sm font-bold text-brand-red">
                     [ // SELECT_PROTOCOL ]
@@ -346,44 +404,59 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Track 1 -->
                 <div class="structural-border p-8 card-hover relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 font-mono font-bold text-gray-300 group-hover:text-brand-red transition-colors text-xl">01</div>
-                    <div class="w-14 h-14 bg-brand-black flex items-center justify-center mb-8 group-hover:bg-brand-red transition-colors">
+                    <div
+                        class="absolute top-0 right-0 p-4 font-mono font-bold text-gray-300 group-hover:text-brand-red transition-colors text-xl">
+                        01</div>
+                    <div
+                        class="w-14 h-14 bg-brand-black flex items-center justify-center mb-8 group-hover:bg-brand-red transition-colors">
                         <i class="fa-solid fa-heart-pulse text-2xl text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-brand-black mb-4 uppercase tracking-tight">Healthcare</h3>
                     <p class="text-brand-darkGray text-sm leading-relaxed font-medium">
-                        Innovate for well-being. Build digital health solutions, diagnostic tools, or advanced patient care systems.
+                        Innovate for well-being. Build digital health solutions, diagnostic tools, or advanced patient
+                        care systems.
                     </p>
                 </div>
 
                 <!-- Track 2 -->
                 <div class="structural-border p-8 card-hover relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 font-mono font-bold text-gray-300 group-hover:text-brand-red transition-colors text-xl">02</div>
-                    <div class="w-14 h-14 bg-brand-black flex items-center justify-center mb-8 group-hover:bg-brand-red transition-colors">
+                    <div
+                        class="absolute top-0 right-0 p-4 font-mono font-bold text-gray-300 group-hover:text-brand-red transition-colors text-xl">
+                        02</div>
+                    <div
+                        class="w-14 h-14 bg-brand-black flex items-center justify-center mb-8 group-hover:bg-brand-red transition-colors">
                         <i class="fa-solid fa-coins text-2xl text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-brand-black mb-4 uppercase tracking-tight">Fintech</h3>
                     <p class="text-brand-darkGray text-sm leading-relaxed font-medium">
-                        Disrupt finance. Create decentralized apps, smart trading algorithms, or accessible financial tools.
+                        Disrupt finance. Create decentralized apps, smart trading algorithms, or accessible financial
+                        tools.
                     </p>
                 </div>
 
                 <!-- Track 3 -->
                 <div class="structural-border p-8 card-hover relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 font-mono font-bold text-gray-300 group-hover:text-brand-red transition-colors text-xl">03</div>
-                    <div class="w-14 h-14 bg-brand-black flex items-center justify-center mb-8 group-hover:bg-brand-red transition-colors">
+                    <div
+                        class="absolute top-0 right-0 p-4 font-mono font-bold text-gray-300 group-hover:text-brand-red transition-colors text-xl">
+                        03</div>
+                    <div
+                        class="w-14 h-14 bg-brand-black flex items-center justify-center mb-8 group-hover:bg-brand-red transition-colors">
                         <i class="fa-solid fa-leaf text-2xl text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-brand-black mb-4 uppercase tracking-tight">Sustainable Tech</h3>
                     <p class="text-brand-darkGray text-sm leading-relaxed font-medium">
-                        Code for the planet. Develop clean energy trackers, waste management platforms, or climate models.
+                        Code for the planet. Develop clean energy trackers, waste management platforms, or climate
+                        models.
                     </p>
                 </div>
 
                 <!-- Track 4 -->
                 <div class="structural-border p-8 card-hover relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 font-mono font-bold text-gray-300 group-hover:text-brand-red transition-colors text-xl">04</div>
-                    <div class="w-14 h-14 bg-brand-black flex items-center justify-center mb-8 group-hover:bg-brand-red transition-colors">
+                    <div
+                        class="absolute top-0 right-0 p-4 font-mono font-bold text-gray-300 group-hover:text-brand-red transition-colors text-xl">
+                        04</div>
+                    <div
+                        class="w-14 h-14 bg-brand-black flex items-center justify-center mb-8 group-hover:bg-brand-red transition-colors">
                         <i class="fa-solid fa-wheat-awn text-2xl text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-brand-black mb-4 uppercase tracking-tight">Agriculture</h3>
@@ -398,19 +471,23 @@
     <!-- Registration Modal (Stark & Functional) -->
     <div id="registration-modal" class="fixed inset-0 z-[100] hidden items-center justify-center px-4 py-6">
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-brand-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
-        
+        <div class="absolute inset-0 bg-brand-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()">
+        </div>
+
         <!-- Modal Content -->
-        <div class="bg-white w-full max-w-xl relative z-10 transform scale-95 opacity-0 transition-all duration-300 flex flex-col max-h-[90vh] shadow-2xl border-t-4 border-brand-red" id="modal-content">
-            
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-brand-black hover:bg-gray-100 transition-colors z-20">
+        <div class="bg-white w-full max-w-xl relative z-10 transform scale-95 opacity-0 transition-all duration-300 flex flex-col max-h-[90vh] shadow-2xl border-t-4 border-brand-red"
+            id="modal-content">
+
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-brand-black hover:bg-gray-100 transition-colors z-20">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
 
             <div class="p-8 sm:p-10 overflow-y-auto custom-scrollbar">
                 <div class="mb-8 border-b-2 border-brand-black pb-4">
                     <h3 class="text-3xl font-black uppercase tracking-tighter mb-1">Join FutureSprint</h3>
-                    <p class="font-mono text-xs text-brand-red font-bold uppercase tracking-widest">Execute Registration Protocol</p>
+                    <p class="font-mono text-xs text-brand-red font-bold uppercase tracking-widest">Execute Registration
+                        Protocol</p>
                 </div>
 
                 <form id="register-form" class="space-y-5" onsubmit="handleRegistration(event)">
@@ -419,46 +496,59 @@
                         <h4 class="text-sm font-black uppercase border-l-2 border-brand-red pl-2 mb-4">Team Leader</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                             <div class="space-y-1.5">
-                                <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">First Name</label>
-                                <input type="text" required class="w-full bg-brand-gray border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red focus:bg-white transition-all font-medium">
+                                <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">First
+                                    Name</label>
+                                <input type="text" required
+                                    class="w-full bg-brand-gray border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red focus:bg-white transition-all font-medium">
                             </div>
                             <div class="space-y-1.5">
-                                <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">Last Name</label>
-                                <input type="text" required class="w-full bg-brand-gray border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red focus:bg-white transition-all font-medium">
+                                <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">Last
+                                    Name</label>
+                                <input type="text" required
+                                    class="w-full bg-brand-gray border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red focus:bg-white transition-all font-medium">
                             </div>
                         </div>
 
                         <div class="space-y-1.5 mb-5">
-                            <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">Email Address</label>
-                            <input type="email" required class="w-full bg-brand-gray border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red focus:bg-white transition-all font-medium">
+                            <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">Email
+                                Address</label>
+                            <input type="email" required
+                                class="w-full bg-brand-gray border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red focus:bg-white transition-all font-medium">
                         </div>
 
                         <div class="space-y-1.5 mb-5">
-                            <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">GitHub / Portfolio URL</label>
-                            <input type="url" required class="w-full bg-brand-gray border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red focus:bg-white transition-all font-medium" placeholder="https://">
+                            <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">GitHub /
+                                Portfolio URL</label>
+                            <input type="url" required
+                                class="w-full bg-brand-gray border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red focus:bg-white transition-all font-medium"
+                                placeholder="https://">
                         </div>
                     </div>
 
                     <!-- Dynamic Team Members Section -->
                     <div class="pt-2 pb-4 border-t border-dashed border-gray-300">
                         <div class="flex justify-between items-center mb-3">
-                            <h4 class="text-sm font-black uppercase border-l-2 border-brand-red pl-2">Team Members (Min 1)</h4>
+                            <h4 class="text-sm font-black uppercase border-l-2 border-brand-red pl-2">Team Members (Min
+                                1)</h4>
                             <span class="text-xs font-mono font-bold text-brand-red" id="team-count">2/4</span>
                         </div>
-                        
+
                         <div id="member-inputs" class="space-y-3">
                             <!-- Injected by Javascript -->
                         </div>
 
-                        <button type="button" id="add-member-btn" onclick="addTeamMember()" class="w-full py-3 mt-3 border border-brand-red border-dashed text-brand-red text-xs font-bold uppercase tracking-widest hover:bg-brand-red hover:text-white transition-colors flex items-center justify-center gap-2">
+                        <button type="button" id="add-member-btn" onclick="addTeamMember()"
+                            class="w-full py-3 mt-3 border border-brand-red border-dashed text-brand-red text-xs font-bold uppercase tracking-widest hover:bg-brand-red hover:text-white transition-colors flex items-center justify-center gap-2">
                             <i class="fa-solid fa-plus"></i> Add Team Member
                         </button>
                     </div>
 
                     <!-- Bounty Select -->
                     <div class="space-y-1.5 pb-2">
-                        <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">Target Bounty</label>
-                        <select class="w-full bg-white border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red transition-all cursor-pointer appearance-none font-medium">
+                        <label class="text-xs font-bold text-brand-darkGray uppercase tracking-wider">Target
+                            Bounty</label>
+                        <select
+                            class="w-full bg-white border border-gray-300 py-3 px-4 text-sm text-brand-black focus:outline-none focus:border-brand-red transition-all cursor-pointer appearance-none font-medium">
                             <option value="health">Healthcare</option>
                             <option value="fintech">Fintech</option>
                             <option value="sustain">Sustainable Tech</option>
@@ -466,7 +556,8 @@
                         </select>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="btn-accent w-full py-4 text-sm uppercase tracking-widest mt-4">
+                    <button type="submit" id="submit-btn"
+                        class="btn-accent w-full py-4 text-sm uppercase tracking-widest mt-4">
                         Submit Application
                     </button>
                 </form>
@@ -477,7 +568,8 @@
                         <i class="fa-solid fa-check text-2xl"></i>
                     </div>
                     <h4 class="text-2xl font-black uppercase tracking-tight mb-2">Application Received</h4>
-                    <p class="text-brand-darkGray text-sm font-medium mb-8">Data successfully committed to the mainframe. Awaiting email confirmation.</p>
+                    <p class="text-brand-darkGray text-sm font-medium mb-8">Data successfully committed to the
+                        mainframe. Awaiting email confirmation.</p>
                     <button onclick="closeModal()" class="btn-solid px-8 py-3 text-sm uppercase tracking-widest">
                         Close Terminal
                     </button>
@@ -488,12 +580,14 @@
 
     <!-- Footer -->
     <footer class="border-t-4 border-brand-black bg-white py-8 md:py-12 mt-12 relative z-10">
-        <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+        <div
+            class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
             <div class="flex items-center gap-2 text-brand-black">
-                <div class="w-6 h-6 bg-brand-black text-white flex items-center justify-center text-xs font-bold">F</div>
+                <div class="w-6 h-6 bg-brand-black text-white flex items-center justify-center text-xs font-bold">F
+                </div>
                 <span class="font-black text-lg uppercase tracking-tight">FutureSprint</span>
             </div>
-            
+
             <div class="flex gap-8 text-sm font-bold uppercase tracking-wider text-brand-darkGray">
                 <a href="#" class="hover:text-brand-red transition-colors">GitHub</a>
                 <a href="#" class="hover:text-brand-red transition-colors">Discord</a>
@@ -552,21 +646,21 @@
         function openModal() {
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            
+
             form.classList.remove('hidden');
             successMessage.classList.add('hidden');
             form.reset();
-            
+
             // Reset Team Members
             memberInputsContainer.innerHTML = '';
             addTeamMember(true); // Add mandatory first team member
             updateMemberUI();
-            
+
             setTimeout(() => {
                 modalContent.classList.remove('scale-95', 'opacity-0');
                 modalContent.classList.add('scale-100', 'opacity-100');
             }, 10);
-            
+
             if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
                 mobileBtn.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
@@ -576,7 +670,7 @@
         function closeModal() {
             modalContent.classList.remove('scale-100', 'opacity-100');
             modalContent.classList.add('scale-95', 'opacity-0');
-            
+
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
@@ -586,7 +680,7 @@
         // Team Member Logic
         function addTeamMember(isMandatory = false) {
             const currentTotal = memberInputsContainer.children.length + 1; // +1 for the leader
-            
+
             if (currentTotal >= 4) return;
 
             const memberId = Date.now();
@@ -620,7 +714,7 @@
         function updateMemberUI() {
             const currentTotal = memberInputsContainer.children.length + 1;
             teamCountDisplay.innerText = `${currentTotal}/4`;
-            
+
             if (currentTotal >= 4) {
                 addMemberBtn.style.display = 'none';
             } else {
@@ -632,7 +726,7 @@
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
             const originalText = btn.innerHTML;
-            
+
             btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i>PROCESSING DATA';
             btn.disabled = true;
 
@@ -640,11 +734,12 @@
                 form.classList.add('hidden');
                 successMessage.classList.remove('hidden');
                 successMessage.classList.add('flex');
-                
+
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             }, 1200);
         }
     </script>
 </body>
+
 </html>
