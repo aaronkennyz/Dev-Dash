@@ -1,7 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+
+interface Member {
+  name: string;
+  registerNumber?: string;
+}
 
 interface Registration {
   _id: string;
@@ -11,8 +16,12 @@ interface Registration {
     email: string;
     github: string;
     bounty: string;
+    registerNumber?: string;
+    abstract?: string;
+    department?: string;
+    subdepartment?: string;
   };
-  members: string[];
+  members: (string | Member)[];
   createdAt: string;
 }
 
@@ -22,6 +31,7 @@ export default function AdminDashboard() {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,6 +59,10 @@ export default function AdminDashboard() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const toggleRow = (id: string) => {
+    setExpandedRow(expandedRow === id ? null : id);
   };
 
   return (
@@ -118,42 +132,86 @@ export default function AdminDashboard() {
                     <th className="p-4 font-black uppercase text-sm tracking-widest">Team Leader</th>
                     <th className="p-4 font-black uppercase text-sm tracking-widest">Email</th>
                     <th className="p-4 font-black uppercase text-sm tracking-widest">Target Bounty</th>
-                    <th className="p-4 font-black uppercase text-sm tracking-widest">Members</th>
                     <th className="p-4 font-black uppercase text-sm tracking-widest">Timestamp</th>
+                    <th className="p-4 font-black uppercase text-sm tracking-widest text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {registrations.map((reg) => (
-                    <tr key={reg._id} className="border-b-2 border-gray-200 hover:bg-gray-50 transition-colors">
-                      <td className="p-4">
-                        <div className="font-bold text-brand-black">
-                          {reg.leader.firstName} {reg.leader.lastName}
-                        </div>
-                        <a href={reg.leader.github} target="_blank" rel="noreferrer" className="text-xs font-mono text-brand-red hover:underline block mt-1">
-                          GitHub Link
-                        </a>
-                      </td>
-                      <td className="p-4 font-medium text-sm">{reg.leader.email}</td>
-                      <td className="p-4">
-                        <span className="bg-brand-black text-white px-2 py-1 text-xs font-bold uppercase tracking-wider">
-                          {reg.leader.bounty}
-                        </span>
-                      </td>
-                      <td className="p-4">
-                        {reg.members.length > 0 ? (
-                          <ul className="list-disc list-inside text-sm font-medium pl-2">
-                            {reg.members.map((m, i) => (
-                              <li key={i}>{m}</li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <span className="text-xs text-gray-400 font-bold uppercase">Solo</span>
-                        )}
-                      </td>
-                      <td className="p-4 text-xs font-mono text-gray-500">
-                        {new Date(reg.createdAt).toLocaleString()}
-                      </td>
-                    </tr>
+                    <React.Fragment key={reg._id}>
+                      <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                        <td className="p-4">
+                          <div className="font-bold text-brand-black">
+                            {reg.leader.firstName} {reg.leader.lastName}
+                          </div>
+                        </td>
+                        <td className="p-4 font-medium text-sm">{reg.leader.email}</td>
+                        <td className="p-4">
+                          <span className="bg-brand-black text-white px-2 py-1 text-xs font-bold uppercase tracking-wider">
+                            {reg.leader.bounty}
+                          </span>
+                        </td>
+                        <td className="p-4 text-xs font-mono text-gray-500">
+                          {new Date(reg.createdAt).toLocaleString()}
+                        </td>
+                        <td className="p-4 text-center">
+                          <button
+                            onClick={() => toggleRow(reg._id)}
+                            className="bg-brand-black text-white text-[10px] font-bold uppercase tracking-wider px-3 py-2 hover:bg-brand-red transition-colors"
+                          >
+                            {expandedRow === reg._id ? "Close View" : "Advanced View"}
+                          </button>
+                        </td>
+                      </tr>
+                      {/* Expanded View */}
+                      {expandedRow === reg._id && (
+                        <tr className="bg-gray-50 border-b-4 border-brand-black">
+                          <td colSpan={5} className="p-6">
+                            <div className="grid md:grid-cols-2 gap-8">
+                              <div>
+                                <h4 className="font-black uppercase tracking-widest border-b-2 border-brand-red pb-1 mb-3 text-sm">Leader Info</h4>
+                                <ul className="space-y-2 text-sm font-medium">
+                                  <li><span className="text-gray-500 font-bold">Reg No:</span> {reg.leader.registerNumber || "N/A"}</li>
+                                  <li><span className="text-gray-500 font-bold">Department:</span> {reg.leader.department || "N/A"}</li>
+                                  <li><span className="text-gray-500 font-bold">Sub-Dept:</span> {reg.leader.subdepartment || "N/A"}</li>
+                                  <li>
+                                    <span className="text-gray-500 font-bold">GitHub:</span>{" "}
+                                    <a href={reg.leader.github} target="_blank" rel="noreferrer" className="text-brand-red hover:underline">
+                                      {reg.leader.github}
+                                    </a>
+                                  </li>
+                                </ul>
+
+                                <h4 className="font-black uppercase tracking-widest border-b-2 border-brand-red pb-1 mb-3 text-sm mt-6">Team Members</h4>
+                                {reg.members.length > 0 ? (
+                                  <ul className="space-y-2 text-sm font-medium list-disc list-inside">
+                                    {reg.members.map((m, i) => {
+                                      if (typeof m === 'string') {
+                                        return <li key={i}>{m}</li>;
+                                      }
+                                      return (
+                                        <li key={i}>
+                                          {m.name} <span className="text-gray-500 font-mono text-xs ml-1">[{m.registerNumber || "N/A"}]</span>
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                ) : (
+                                  <span className="text-xs text-gray-400 font-bold uppercase">Solo Participant</span>
+                                )}
+                              </div>
+                              
+                              <div>
+                                <h4 className="font-black uppercase tracking-widest border-b-2 border-brand-red pb-1 mb-3 text-sm">Project Abstract</h4>
+                                <div className="bg-white p-4 border-2 border-gray-200 text-sm font-medium leading-relaxed min-h-[120px] whitespace-pre-wrap">
+                                  {reg.leader.abstract || <span className="text-gray-400 italic">No abstract provided.</span>}
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      )}
+                    </React.Fragment>
                   ))}
                 </tbody>
               </table>
